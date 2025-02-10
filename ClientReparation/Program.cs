@@ -22,7 +22,7 @@ namespace ClientReparation
             Console.WriteLine(client.AfficherInfos());
 
             Console.WriteLine("_______________________________________");
-            Mecanicien mecano = new Mecanicien("Laye", "", "Marseille", new List<Competences>());
+            Mecanicien mecano = new Mecanicien("Laye", "Grand", "Marseille", new List<Competences>());
             Console.WriteLine(mecano.AfficherInfos());
             
             Console.WriteLine(vtr2.panne);
