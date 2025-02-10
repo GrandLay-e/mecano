@@ -6,7 +6,7 @@ Chaque projet illustre des compétences techniques et conceptuelles acquises au 
 ## Structure du repository
 Le repository est organisé en dossiers, chaque dossier correspondant à un projet spécifique. 
 
-## Principaux langages qui se :
+## Principaux langages :
  - HTML / CSS
  - PHP
  - C#
