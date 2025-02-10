@@ -17,7 +17,7 @@ namespace ClientReparation
             vtr2.AjouterPanne("Moteur");
 
             List<Voiture> voitures = new List<Voiture>() { vtr, vtr2, vtr3 };
-            Client client = new Client("Sow", "Abdallah", "Paris 75000", voitures);
+            Client client = new Client("Dupont", "Patrick", "Paris 75000", voitures);
             Console.WriteLine("_______________________________________");
             Console.WriteLine(client.AfficherInfos());
 
