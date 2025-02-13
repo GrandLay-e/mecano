@@ -6,46 +6,76 @@ using System.Threading.Tasks;
 
 namespace ClientReparation
 {
-    public class Voiture 
+    public class Voiture
     {
-        public string marque;
-        public string matricule;
-        public bool enPanne;
-        public string panne;
+        private string marque;
+        private string matricule;
+        private bool enPanne;
+        private string panne;
+
+        public string Marque
+        {
+            get { return marque; }
+            set { marque = value; }
+        }
+
+        public string Matricule
+        {
+            get { return matricule; }
+            set { matricule = value; }
+        }
+
+        public bool EnPanne
+        {
+            get { return enPanne; }
+            set { enPanne = value; }
+        }
+
+        public string Panne
+        {
+            get { return panne; }
+            set { panne = value; }
+        }
 
         ///Constructeur par défaut
         public Voiture()
         {
-            this.marque = "";
-            this.matricule = "";
-            this.enPanne = false;
-            this.panne = "";
+            this.Marque = "";
+            this.Matricule = "";
+            this.EnPanne = false;
+            this.Panne = "";
         }
+
         ///Constructeur principal
         public Voiture(string marque, string matricule, bool enPanne, string panne = "")
         {
-            this.marque = marque;
-            this.matricule = matricule;
-            this.enPanne = enPanne;
-            if (this.enPanne){
+            this.Marque = marque;
+            this.Matricule = matricule;
+            this.EnPanne = enPanne;
+            if (this.EnPanne)
+            {
                 this.AjouterPanne(panne);
-            }else{
-                this.panne = "";
+            }
+            else
+            {
+                this.Panne = "";
             }
         }
+
         ///A appeler quand une voiture tombe en panne, ce qui convertit automatiquement 
         ///la boolenne ePanne à true, et ce uniquement si la panne est "valide" pas de chaine vide
         public void AjouterPanne(string panne)
         {
             if (panne.Length > 1)
             {
-                this.panne = panne;
-                this.enPanne = true;
+                this.Panne = panne;
+                this.EnPanne = true;
             }
         }
+
         public bool Rouler()
         {
-            if (this.enPanne)
+            if (this.EnPanne)
             {
                 return false;
             }
@@ -55,13 +85,17 @@ namespace ClientReparation
         ///Afficher les infroamtions d'une voiture
         public string AfficherVoiture()
         {
-            string details = $"Marque : {this.marque}\n" +
-                $"\tMatricule : {this.matricule}\n\tEtat : ";
-            if (this.enPanne){
-                details += $"\tEn panne de {this.panne}\n";
-            }else{
+            string details = $"Marque : {this.Marque}\n" +
+                $"\tMatricule : {this.Matricule}\n\tEtat : ";
+            if (this.EnPanne)
+            {
+                details += $"\tEn panne de {this.Panne}\n";
+            }
+            else
+            {
                 details += "\tEn bon état\n";
-            }return details;
+            }
+            return details;
         }
     }
 }

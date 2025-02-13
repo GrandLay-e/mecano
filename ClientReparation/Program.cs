@@ -17,22 +17,23 @@ namespace ClientReparation
             vtr2.AjouterPanne("Moteur");
 
             List<Voiture> voitures = new List<Voiture>() { vtr, vtr2, vtr3 };
-            Client client = new Client("Sow", "Abdallah", "Paris 75000", voitures);
+            Client client = new Client("Toto", "TITI", "Paris 75000", voitures);
             Console.WriteLine("_______________________________________");
             Console.WriteLine(client.AfficherInfos());
 
             Console.WriteLine("_______________________________________");
-            Mecanicien mecano = new Mecanicien("Laye", "", "Marseille", new List<Competences>());
+            Mecanicien mecano = new Mecanicien("Laye", "Grand", "Marseille", new List<Competences>());
             Console.WriteLine(mecano.AfficherInfos());
             
-            Console.WriteLine(vtr2.panne);
-            Console.WriteLine(vtr3.panne);
+            Console.WriteLine(vtr2.Panne);
+            Console.WriteLine(vtr3.Panne);
             Console.WriteLine(client.DemanderReparation(vtr3, mecano));
-            mecano.ApprendreNouvelleCompetence(new Competences(vtr2.panne));
-            mecano.ApprendreNouvelleCompetence(new Competences(vtr3.panne));
-            mecano.ApprendreNouvelleCompetence(new Competences(vtr.panne));
+            mecano.ApprendreNouvelleCompetence(new Competences(vtr2.Panne));
+            mecano.ApprendreNouvelleCompetence(new Competences(vtr3.Panne));
+            mecano.ApprendreNouvelleCompetence(new Competences(vtr.Panne));
             Console.WriteLine(client.DemanderReparation(vtr3, mecano));
             Console.WriteLine(mecano.AfficherInfos());
         }
+        
     }
 }

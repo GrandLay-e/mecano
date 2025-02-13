@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 namespace ClientReparation
 {
 
-    /// <summary>
     /// Classe abstraite personne de laquelle vont heriter Mecanicien et clien
-    /// </summary>
     public abstract class Personne
     {
-        public string firstName; 
-        public string lastName;
-        public string adress;
+        private string firstName;
+        private string lastName;
+        private string adress;
 
         ///Constructeur pas défaut
         public Personne()
@@ -31,12 +29,29 @@ namespace ClientReparation
             this.lastName = lastName;
             this.adress = adress;
         }
+        
+        public string FirstName
+        {
+            get {  return this.firstName; }
+            set { this.firstName = value; }
+        }
+        public string LastName
+        {
+            get { return this.lastName; }
+            set { this.lastName = value; }
+        }
+
+        public string Adresse
+        {
+            get { return this.adress; }
+            set { this.adress = value; }
+        }
 
         ///Methode virtuel pour afficher les informations primaires d'une personne
         public virtual string AfficherInfos()
         {
-            return $"Prénom et Nom {this.firstName} {this.lastName}\n" +
-               $"Adresse : {this.adress}\n";
+            return $"Prénom et Nom {this.FirstName} {this.LastName}\n" +
+               $"Adresse : {this.Adresse}\n";
         }
     }
 }

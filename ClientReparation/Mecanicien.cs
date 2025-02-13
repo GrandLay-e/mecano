@@ -6,33 +6,40 @@ using System.Threading.Tasks;
 
 namespace ClientReparation
 {
-    public class Mecanicien:Personne
+    public class Mecanicien : Personne
     {
         ///Un mecanicien a des compétences
-        public  List<Competences> _competences = new List<Competences>();
+        private List<Competences> competences = new List<Competences>();
 
         ///Constructeur pas defaut
         public Mecanicien()
         {
-            this._competences = new List<Competences>();
+            this.Competences = new List<Competences>();
         }
 
         ///Constructeur principal
-        public Mecanicien(string nom, 
-                          string prenom, 
-                          string adresse, 
+        public Mecanicien(string nom,
+                          string prenom,
+                          string adresse,
                           List<Competences> competences) : base(nom, prenom, adresse)
         {
-            this._competences = competences;
+            this.Competences = competences;
+        }
+
+        ///Propriéte de l'attibut qui sert de liste de compétences du mécanicien
+        public List<Competences> Competences
+        {
+            get { return this.competences; }
+            set { this.competences = value; }
         }
 
         ///Methode pour ajouter une compétence pour le mecanicien
         private void AjouterCompetence(Competences _competence)
         {
             ///Ajouter si la compétences n'est pas encore sur les siens
-            if (!this.EstCompetentPour(_competence) && _competence.competence != "")
+            if (!this.EstCompetentPour(_competence) && _competence.Competence != "")
             {
-                this._competences.Add(_competence);
+                this.Competences.Add(_competence);
             }
         }
 
@@ -42,10 +49,10 @@ namespace ClientReparation
         ///Une booleenne pour vérifier si le mecanicien et compétent pour réparer une panne
         public bool EstCompetentPour(Competences _competence)
         {
-            string compet = _competence.competence;
-            for (int i = 0; i < this._competences.Count; i++)
+            string compet = _competence.Competence;
+            for (int i = 0; i < this.Competences.Count; i++)
             {
-                if (this._competences[i].competence == compet)
+                if (this.Competences[i].Competence == compet)
                 {
                     return true;
                 }
@@ -56,8 +63,8 @@ namespace ClientReparation
         ///Il répare la voiture, une methode appelée uniquement si la précedente est vraie
         public void Reparer(Voiture voiture)
         {
-            voiture.enPanne = false;
-            voiture.panne = "";
+            voiture.EnPanne = false;
+            voiture.Panne = "";
         }
 
         ///Stocker les informations du mécanicien dans une methode qui sera concaténée à la methode
@@ -65,13 +72,15 @@ namespace ClientReparation
         private string InformationsMecano()
         {
             string infos = $"Compétences : ";
-            if(this._competences.Count > 0)
+            if (this.Competences.Count > 0)
             {
-                for(int i = 0;i < this._competences.Count; i++)
+                for (int i = 0; i < this.Competences.Count; i++)
                 {
-                    infos +=$"\n\t{i+1} - {this._competences[i].competence}";
+                    infos += $"\n\t{i + 1} - {this.Competences[i].Competence}";
                 }
-            }else{
+            }
+            else
+            {
                 infos += "Zéro";
             }
             return infos + "\n";

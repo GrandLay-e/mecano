@@ -9,7 +9,13 @@ namespace ClientReparation
     public class Reparation
     {
         ///Classe qui permet de définir la ou les compétences necessaires pour réparer une voiture
-        public List<Competences> competencesNecessaires = new List<Competences>();
+        private List<Competences> competencesNecessaires = new List<Competences>();
+
+        public List<Competences> CompetencesNecessaires
+        {
+            get { return competencesNecessaires;}
+            set { competencesNecessaires = value;}
+        }
         public Reparation(){}
         public Reparation(List<Competences> competencesNecessaires)
         {
